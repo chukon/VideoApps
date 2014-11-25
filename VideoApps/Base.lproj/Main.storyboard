@@ -28,7 +28,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-213.86666666666667" y="-296.30666666666667"/>
+            <point key="canvasLocation" x="-210" y="-297"/>
         </scene>
         <!--VIDEO-->
         <scene sceneID="AAe-6H-r45">
@@ -103,7 +103,7 @@
                                                 <action selector="btnBack:" destination="YQp-Ph-PNW" id="wDV-mJ-kOz"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="sHY-Cd-SWw">
+                                        <barButtonItem key="rightBarButtonItem" title="Filter" id="sHY-Cd-SWw">
                                             <connections>
                                                 <action selector="btnEdit:" destination="YQp-Ph-PNW" id="YO0-hc-uXG"/>
                                             </connections>
@@ -111,7 +111,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ENTER NAME FOR VIDEO" minimumFontSize="17" id="2vH-3x-Ynm">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ENTER NAME FOR VIDEO" minimumFontSize="17" clearButtonMode="whileEditing" id="2vH-3x-Ynm">
                                 <rect key="frame" x="16" y="124" width="293" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -124,7 +124,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jIg-sZ-3RM">
-                                <rect key="frame" x="141" y="153" width="42" height="30"/>
+                                <rect key="frame" x="141" y="162" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                 <state key="normal" title="Play">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -133,8 +133,30 @@
                                     <action selector="btnPlay:" destination="YQp-Ph-PNW" eventType="touchUpInside" id="hP7-dX-213"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="67x-TK-0z5">
+                                <rect key="frame" x="16" y="184" width="293" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.90196084980000002" green="0.0" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" id="vmE-NE-4LT">
+                                <rect key="frame" x="2" y="285" width="320" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="YQp-Ph-PNW" id="l3H-tm-eJt"/>
+                                    <outlet property="delegate" destination="YQp-Ph-PNW" id="ttP-cm-rbC"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select A Filter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tjV-B8-7fg">
+                                <rect key="frame" x="21" y="280" width="283" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wER-My-8gT">
-                                <rect key="frame" x="254" y="153" width="50" height="30"/>
+                                <rect key="frame" x="254" y="162" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                 <state key="normal" title="Record">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -147,8 +169,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="btnEdit" destination="sHY-Cd-SWw" id="Dbh-BF-DOX"/>
                         <outlet property="btnPlay" destination="jIg-sZ-3RM" id="8DB-UB-oNY"/>
                         <outlet property="btnRecord" destination="wER-My-8gT" id="a9Y-N5-n99"/>
+                        <outlet property="lblmsg" destination="tjV-B8-7fg" id="NXS-gR-gcT"/>
+                        <outlet property="picker" destination="vmE-NE-4LT" id="ffh-hS-5qd"/>
+                        <outlet property="progressLabel" destination="67x-TK-0z5" id="An0-IW-ex4"/>
                         <outlet property="txtDate" destination="bfO-n3-1aq" id="Go2-Ct-VAw"/>
                         <outlet property="txtName" destination="2vH-3x-Ynm" id="kUr-Pb-jiB"/>
                     </connections>
