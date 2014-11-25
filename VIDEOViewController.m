@@ -70,6 +70,7 @@ CGAffineTransform transform;
         FilterType=@"";
         [self.txtDate setText:[self.videodb valueForKey:@"datestamp"]];
         self.btnRecord.hidden = YES;
+         self.lblrecord.hidden=YES;
          self.btnEdit.enabled = YES;
          self.btnEdit.title = @"Filter";
           self.btnPlay.hidden = NO;
@@ -82,21 +83,33 @@ CGAffineTransform transform;
         // Connect data
         self.picker.dataSource = self;
         self.picker.delegate = self;
-        
-        
+        if ([self.txtName.text containsString:(@"-->")])
+        {
+            self.btnEdit.enabled = NO;
+            self.btnEdit.title = @"";
+        }
+        [NSTimer scheduledTimerWithTimeInterval: 1.0  target: self selector: @selector(updatedates:) userInfo: nil repeats: NO];
+
+    
     }
     else
     {
+        self.lblplay.hidden=YES;
          self.btnPlay.hidden = YES;
         SaveMsg=@"Video Saved";
            self.btnEdit.enabled = NO;
          self.txtDate.hidden = YES;
         self.btnRecord.hidden = NO;
+        self.lblrecord.hidden=NO;
        
          [self.txtName becomeFirstResponder];
     }
 
     // Do any additional setup after loading the view.
+}
+- (void) updatedates:(NSTimer*) t
+{
+    [self PlayNow];
 }
 -(void)dismissKeyboard {
     // add textfields and textviews
@@ -341,10 +354,18 @@ CGAffineTransform transform;
         self.lblmsg.hidden=NO;
         self.picker.hidden=NO;
     }
-    if ([self.btnEdit.title isEqual:@"Apply Filter"])
+    else
     {
-        self.txtName.text=[NSString stringWithFormat:@"%@-%@", self.txtName.text,FilterTypeSelected];
+        self.lblmsg.hidden=YES;
+        self.picker.hidden=YES;
+    }
+      if ([self.btnEdit.title isEqual:@"Apply Filter"])
+    {
+        self.txtName.text=[NSString stringWithFormat:@"%@-->%@", self.txtName.text,FilterTypeSelected];
          self.lblmsg.hidden=YES;
+         self.lblrecord.hidden=YES;
+          self.lblplay.hidden=YES;
+        self.btnRecord.hidden = YES;
         self.btnPlay.hidden = YES;
     self.picker.hidden=YES;
     [self gs];

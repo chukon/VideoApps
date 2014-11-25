@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		3602ADA81A22CE8C008BC7C3 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3602ADA31A22CC26008BC7C3 /* libGPUImage.a */; };
 		3602ADAA1A22CEB0008BC7C3 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3602ADA91A22CEB0008BC7C3 /* CoreVideo.framework */; };
+		36206F991A24E0D700ED22AC /* Screen Shot 2014-11-25 at 10.07.13 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 36206F971A24E0D700ED22AC /* Screen Shot 2014-11-25 at 10.07.13 AM.png */; };
+		36206F9A1A24E0D700ED22AC /* Screen Shot 2014-11-25 at 10.07.25 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 36206F981A24E0D700ED22AC /* Screen Shot 2014-11-25 at 10.07.25 AM.png */; };
+		36206F9C1A24E16B00ED22AC /* download.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 36206F9B1A24E16B00ED22AC /* download.jpeg */; };
+		36206F9E1A25150800ED22AC /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 36206F9D1A25150800ED22AC /* play.png */; };
+		36206FA01A2515AF00ED22AC /* video_record-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 36206F9F1A2515AF00ED22AC /* video_record-512.png */; };
+		36206FA21A25194A00ED22AC /* Start.png in Resources */ = {isa = PBXBuildFile; fileRef = 36206FA11A25194A00ED22AC /* Start.png */; };
 		365845741A1AC54F000ABFAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 365845731A1AC54F000ABFAD /* main.m */; };
 		365845771A1AC54F000ABFAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 365845761A1AC54F000ABFAD /* AppDelegate.m */; };
 		3658457A1A1AC54F000ABFAD /* VideoApps.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 365845781A1AC54F000ABFAD /* VideoApps.xcdatamodeld */; };
@@ -74,6 +80,12 @@
 /* Begin PBXFileReference section */
 		3602AD9C1A22CC26008BC7C3 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = Submodules/GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		3602ADA91A22CEB0008BC7C3 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		36206F971A24E0D700ED22AC /* Screen Shot 2014-11-25 at 10.07.13 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2014-11-25 at 10.07.13 AM.png"; sourceTree = "<group>"; };
+		36206F981A24E0D700ED22AC /* Screen Shot 2014-11-25 at 10.07.25 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2014-11-25 at 10.07.25 AM.png"; sourceTree = "<group>"; };
+		36206F9B1A24E16B00ED22AC /* download.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = download.jpeg; sourceTree = "<group>"; };
+		36206F9D1A25150800ED22AC /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		36206F9F1A2515AF00ED22AC /* video_record-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_record-512.png"; sourceTree = "<group>"; };
+		36206FA11A25194A00ED22AC /* Start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Start.png; sourceTree = "<group>"; };
 		3658456E1A1AC54F000ABFAD /* VideoApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		365845721A1AC54F000ABFAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		365845731A1AC54F000ABFAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -161,9 +173,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		36206F941A24DEAE00ED22AC /* images */ = {
+			isa = PBXGroup;
+			children = (
+				36206FA11A25194A00ED22AC /* Start.png */,
+				36206F9F1A2515AF00ED22AC /* video_record-512.png */,
+				36206F9D1A25150800ED22AC /* play.png */,
+				36206F9B1A24E16B00ED22AC /* download.jpeg */,
+				36206F971A24E0D700ED22AC /* Screen Shot 2014-11-25 at 10.07.13 AM.png */,
+				36206F981A24E0D700ED22AC /* Screen Shot 2014-11-25 at 10.07.25 AM.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		365845651A1AC54F000ABFAD = {
 			isa = PBXGroup;
 			children = (
+				36206F941A24DEAE00ED22AC /* images */,
 				3602ADA91A22CEB0008BC7C3 /* CoreVideo.framework */,
 				3602AD9C1A22CC26008BC7C3 /* GPUImage.xcodeproj */,
 				365845C51A1ACD00000ABFAD /* libz.1.dylib */,
@@ -359,9 +385,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36206F9E1A25150800ED22AC /* play.png in Resources */,
+				36206FA01A2515AF00ED22AC /* video_record-512.png in Resources */,
+				36206F9A1A24E0D700ED22AC /* Screen Shot 2014-11-25 at 10.07.25 AM.png in Resources */,
 				365845801A1AC54F000ABFAD /* Main.storyboard in Resources */,
 				365845851A1AC54F000ABFAD /* LaunchScreen.xib in Resources */,
 				365845821A1AC54F000ABFAD /* Images.xcassets in Resources */,
+				36206F991A24E0D700ED22AC /* Screen Shot 2014-11-25 at 10.07.13 AM.png in Resources */,
+				36206F9C1A24E16B00ED22AC /* download.jpeg in Resources */,
+				36206FA21A25194A00ED22AC /* Start.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

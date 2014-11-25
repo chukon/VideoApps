@@ -39,5 +39,7 @@
 - (IBAction)btngs:(id)sender;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UILabel *lblmsg;
+@property (weak, nonatomic) IBOutlet UILabel *lblrecord;
+@property (weak, nonatomic) IBOutlet UILabel *lblplay;
 
 @end
