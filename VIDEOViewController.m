@@ -51,7 +51,7 @@ CGAffineTransform transform;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Initialize Data
-    pickerData = @[@"GreyScale", @"Sepia", @"Sketch", @"Pixellate", @"ColorInvert", @"Cartoon",@"Distortion"];
+    pickerData = @[@"Select Filter",@"GreyScale", @"Sepia", @"Sketch", @"Pixellate", @"ColorInvert", @"Cartoon",@"Distortion"];
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:@"UIDeviceOrientationDidChangeNotification" object:nil];
 
@@ -83,6 +83,8 @@ CGAffineTransform transform;
         // Connect data
         self.picker.dataSource = self;
         self.picker.delegate = self;
+        self.lblShare.hidden=NO;
+        self.btnShare.hidden=NO;
         if ([self.txtName.text containsString:(@"-->")])
         {
             self.btnEdit.enabled = NO;
@@ -94,6 +96,8 @@ CGAffineTransform transform;
     }
     else
     {
+        self.lblShare.hidden=YES;
+        self.btnShare.hidden=YES;
         self.lblplay.hidden=YES;
          self.btnPlay.hidden = YES;
         SaveMsg=@"Video Saved";
@@ -172,13 +176,7 @@ CGAffineTransform transform;
     if (![context save:&error]) {
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
     }
-    else
-    {
-        
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:SaveMsg
-                                                          delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [alertView show];
-    }
+    
     // NSString *  filePath;
     // sleep(2);
     //[self UploadNow];
@@ -353,20 +351,23 @@ CGAffineTransform transform;
     {
         self.lblmsg.hidden=NO;
         self.picker.hidden=NO;
+        self.btnRecord.hidden = YES;
+        self.btnPlay.hidden = YES;
+         self.btnShare.hidden = YES;
     }
     else
     {
         self.lblmsg.hidden=YES;
         self.picker.hidden=YES;
+        //self.btnRecord.hidden = NO;
+        self.btnPlay.hidden = NO;
+        self.btnShare.hidden = NO;
     }
       if ([self.btnEdit.title isEqual:@"Apply Filter"])
     {
         self.txtName.text=[NSString stringWithFormat:@"%@-->%@", self.txtName.text,FilterTypeSelected];
          self.lblmsg.hidden=YES;
-         self.lblrecord.hidden=YES;
-          self.lblplay.hidden=YES;
-        self.btnRecord.hidden = YES;
-        self.btnPlay.hidden = YES;
+
     self.picker.hidden=YES;
     [self gs];
     }
@@ -478,44 +479,69 @@ numberOfRowsInComponent:(NSInteger)component
     // This method is triggered whenever the user makes a change to the picker selection.
     // The parameter named row and component represents what was selected.
     switch (row) {
-        case 0:
+        case 1:
             selectedFilter = [[GPUImageGrayscaleFilter alloc] init];
             self.btnEdit.Title = @"Apply Filter";
             FilterTypeSelected=@"Grayscale";
             break;
-        case 1:
+        case 2:
             selectedFilter = [[GPUImageSepiaFilter alloc] init];
               FilterTypeSelected=@"Sepia";
              self.btnEdit.Title = @"Apply Filter";
             break;
-        case 2:
+        case 3:
             selectedFilter = [[GPUImageSketchFilter alloc] init];
              self.btnEdit.Title = @"Apply Filter";
               FilterTypeSelected=@"Sketch";
             break;
-        case 3:
+        case 4:
             selectedFilter = [[GPUImagePixellateFilter alloc] init];
              self.btnEdit.Title = @"Apply Filter";
               FilterTypeSelected=@"Pixellate";
             break;
-        case 4:
+        case 5:
             selectedFilter = [[GPUImageColorInvertFilter alloc] init];
              self.btnEdit.Title = @"Apply Filter";
               FilterTypeSelected=@"ColorInvert";
             break;
-        case 5:
+        case 6:
             selectedFilter = [[GPUImageToonFilter alloc] init];
              self.btnEdit.Title = @"Apply Filter";
               FilterTypeSelected=@"Cartoon";
             break;
-        case 6:
+        case 7:
             selectedFilter = [[GPUImagePinchDistortionFilter alloc] init];
              self.btnEdit.Title = @"Apply Filter";
               FilterTypeSelected=@"Distortion";
+        case 0:
+            selectedFilter = [[GPUImageFilter alloc] init];
+            self.btnEdit.Title = @"Filter";
+            FilterTypeSelected=@"";
             break;
         default:
             break;
     }
 }
 
+- (IBAction)btnShare:(id)sender {
+    //Test
+    NSString *text = [NSString stringWithFormat:@"App: Video Filter Fun! \nCheck out my video:%@\n\n%@\n%@", self.txtName.text,@"Thanks for Sharing",@"www.myrvc.org"];
+    //URL
+  //NSURL *url =  [[NSURL alloc] initWithString:@"www.MyRVC.org"];
+    //Image: in your project
+   // UIImage *image = [UIImage imageNamed:@"video_record-512.png"];
+    
+  NSURL *videoPath = [[NSURL alloc] initWithString:vidlink];
+    
+    NSArray *objectsToShare = [NSArray arrayWithObjects:text, videoPath,  nil];
+    //Initiate UIActivity Controller
+    UIActivityViewController *controller =
+    [[UIActivityViewController alloc]
+     initWithActivityItems:objectsToShare
+     applicationActivities:nil];
+    
+    //Start Share Box
+    [self presentViewController:controller animated:YES completion:nil];
+    
+}
 @end

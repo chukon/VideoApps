@@ -41,5 +41,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblmsg;
 @property (weak, nonatomic) IBOutlet UILabel *lblrecord;
 @property (weak, nonatomic) IBOutlet UILabel *lblplay;
+- (IBAction)btnShare:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnShare;
+@property (weak, nonatomic) IBOutlet UILabel *lblShare;
 
 @end
