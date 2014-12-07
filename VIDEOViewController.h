@@ -14,7 +14,7 @@
 #import "GPUImage.h"
 
 
-@interface VIDEOViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate>
+@interface VIDEOViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate, UIAlertViewDelegate>
 {
     GPUImageMovie *movieFile;
     GPUImageOutput<GPUImageInput> *filter;

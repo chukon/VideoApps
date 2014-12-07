@@ -373,67 +373,41 @@ CGAffineTransform transform;
     }
     
 }
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == 1234) {
+        // do stuff
+        CGFloat scaleFactor=1.3f;
+        UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.delegate = self;
+        picker.allowsEditing = NO;
+        picker.showsCameraControls = YES;
+        NSArray *mediaTypes = [[NSArray alloc]initWithObjects:(NSString *)kUTTypeMovie, nil];
+        picker.mediaTypes = mediaTypes;
+        picker.cameraViewTransform = CGAffineTransformScale(CGAffineTransformMakeRotation(M_PI * -90 / 180.0), scaleFactor, scaleFactor);
+        picker.view.transform = CGAffineTransformMakeRotation(M_PI_2);
+        [self presentViewController:picker animated:YES completion:nil];
+    }
+}
 
 - (IBAction)btnRecord:(id)sender {
     if ([self.txtName.text  isEqual: @""] || [self.txtName.text  isEqual: @"ENTER NAME FOR VIDEO"] )
-        
     {
-        
         self.txtName.text = @"ENTER NAME FOR VIDEO";
-        
     }
-    
     else
-        
     {
         
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            
-            CGFloat scaleFactor=1.3f;
-            
-            UIImagePickerController *picker = [[UIImagePickerController alloc]init];
-            
-            
-            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            
-            picker.delegate = self;
-            
-            picker.allowsEditing = NO;
-           
-            
-            picker.showsCameraControls = YES;
-            
-            NSArray *mediaTypes = [[NSArray alloc]initWithObjects:(NSString *)kUTTypeMovie, nil];
-            
-           
-            picker.mediaTypes = mediaTypes;
-            
-      
-       //  picker.cameraViewTransform = CGAffineTransformMakeRotation(M_PI_2);
-             picker.cameraViewTransform = CGAffineTransformScale(CGAffineTransformMakeRotation(M_PI * -90 / 180.0), scaleFactor, scaleFactor);
-          
-            //CGAffineTransformMakeRotation(DEGREES_RADIANS(180));
-           picker.view.transform = CGAffineTransformMakeRotation(M_PI_2);
-
-            
-            [self presentViewController:picker animated:YES completion:nil];
-            
-            
-            
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:@"Please turn phone to left [Landscape]" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+            alertView.tag = 1234;
+             [alertView addButtonWithTitle:@"OK"];
+            [alertView show];
         } else {
-            
-            
-            
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:@"I'm afraid there's no camera on this device!" delegate:nil cancelButtonTitle:@"Dang!" otherButtonTitles:nil, nil];
-            
             [alertView show];
             
         }
-        
-        
-        
-        
-        
     }
     
 
